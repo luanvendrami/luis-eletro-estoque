@@ -17,7 +17,6 @@ import {
   Chip,
   useTheme,
   useMediaQuery,
-  Modal,
   Dialog,
   DialogTitle,
   DialogContent,
@@ -33,14 +32,12 @@ import {
   Tabs,
   Tab,
   Divider,
-  FormGroup,
   Autocomplete,
+  SelectChangeEvent,
 } from '@mui/material';
 import {
   Add as AddIcon,
   Search as SearchIcon,
-  LocalOffer as PromotionIcon,
-  Public as WebIcon,
   Close as CloseIcon,
   Save as SaveIcon,
   Edit as EditIcon,
@@ -51,6 +48,7 @@ import {
   Image as ImageIcon,
 } from '@mui/icons-material';
 import { productsMock, Product } from '@/data/productsMock';
+import Image from 'next/image';
 
 // Interface for product form
 interface ProductFormData {
@@ -86,7 +84,7 @@ interface ProductFormData {
 
 const Products: React.FC = () => {
   const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const _isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
   
   const [searchTerm, setSearchTerm] = useState('');
   const [products, setProducts] = useState<Product[]>(productsMock);
@@ -230,7 +228,7 @@ const Products: React.FC = () => {
   };
 
   // Handle select fields change
-  const handleSelectChange = (e: any, field: string) => {
+  const handleSelectChange = (e: SelectChangeEvent, field: string) => {
     setProductForm({
       ...productForm,
       [field]: e.target.value
@@ -337,12 +335,12 @@ const Products: React.FC = () => {
   };
 
   // Handle promotion button
-  const handlePromotion = (id: number) => {
+  const _handlePromotion = (id: number) => {
     alert(`Adicionar promoção ao produto ID: ${id}`);
   };
 
   // Handle site button
-  const handleSite = (id: number) => {
+  const _handleSite = (id: number) => {
     alert(`Gerenciar produto no site ID: ${id}`);
   };
 
@@ -890,14 +888,14 @@ const Products: React.FC = () => {
                             overflow: 'hidden',
                           }}
                         >
-                          <img
+                          <Image
                             src={image}
                             alt={`Produto ${index + 1}`}
                             style={{
-                              width: '100%',
-                              height: '100%',
                               objectFit: 'cover',
                             }}
+                            fill
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                           />
                           <IconButton
                             size="small"

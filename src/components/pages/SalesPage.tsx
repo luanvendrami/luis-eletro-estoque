@@ -14,7 +14,6 @@ import {
   TableRow,
   TextField,
   InputAdornment,
-  Badge,
   Chip,
   Card,
   useTheme,
@@ -68,10 +67,10 @@ const salesMock: Sale[] = [
 
 const Sales: React.FC = () => {
   const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const _isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
   
   const [searchTerm, setSearchTerm] = useState('');
-  const [sales, setSales] = useState<Sale[]>(salesMock);
+  const [sales, _setSales] = useState<Sale[]>(salesMock);
   
   // Format date to Brazilian format
   const formatDate = (dateString: string) => {
