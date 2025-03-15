@@ -15,8 +15,6 @@ import {
   TextField,
   InputAdornment,
   Chip,
-  Stack,
-  Divider,
   Card,
   CardContent,
   Grid,
@@ -75,10 +73,10 @@ const transactionsMock: Transaction[] = [
 
 const Finance: React.FC = () => {
   const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
+  const _isSmallScreen = useMediaQuery(theme.breakpoints.down('sm'));
   
   const [searchTerm, setSearchTerm] = useState('');
-  const [transactions, setTransactions] = useState<Transaction[]>(transactionsMock);
+  const [transactions, _setTransactions] = useState<Transaction[]>(transactionsMock);
   
   // Format date to Brazilian format
   const formatDate = (dateString: string) => {

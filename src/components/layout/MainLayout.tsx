@@ -16,16 +16,10 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
   // Dynamic drawer width based on screen size
   const drawerWidth = isSmallScreen ? 220 : isMediumScreen ? 240 : 260;
   
-  // Track viewport width for smooth transitions
-  const [windowWidth, setWindowWidth] = useState<number>(0);
-  
   useEffect(() => {
-    // Set initial width
-    setWindowWidth(window.innerWidth);
-    
     // Update width on resize
     const handleResize = () => {
-      setWindowWidth(window.innerWidth);
+      // Handle resize if needed in the future
     };
     
     window.addEventListener('resize', handleResize);
